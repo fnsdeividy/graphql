@@ -1,3 +1,20 @@
-const { ApolloServer } = require('apollo-server')
+const { ApolloServer, gql } = require('apollo-server');
+const users = [
+  {
+    name: 'Ana',
+    active: true,
+  },
+  {
+    name: 'Marcia',
+    active: false,
+  },
+];
+const typeDefs = gql`
+  type User {
+    name: String!
+    active: Boolean!
+    email: String
+  }
+`;
 
-const server = new ApolloServer()
+const server = new ApolloServer({ typeDefs, resolvers });
